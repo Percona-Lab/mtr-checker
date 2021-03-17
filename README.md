@@ -30,7 +30,6 @@ mtr_checker error mysql-test/t mysql-test/r
 
 For processing test suites where both .test and .result files are located in the same directory, run the utility with 2 arguments.
 For instance,
-For instance,
 ```
 mtr_checker error plugin/keyring_vault/tests/mtr
 ```
