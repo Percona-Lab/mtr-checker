@@ -4,9 +4,9 @@
 #include <filesystem>
 #include <string>
 #include <unordered_map>
+#include "test_component_set.hpp"
 
 class logger;
-class test_component_set;
 
 class processor
 {
