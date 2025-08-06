@@ -1,0 +1,111 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "common_hidden",
+      "hidden": true,
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceParentDir}/${sourceDirName}-build-${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_C_COMPILER_LAUNCHER": "ccache",
+        "CMAKE_CXX_COMPILER_LAUNCHER": "ccache"
+      }
+    },
+
+    {
+      "name": "debug_hidden",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release_hidden",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "asan_hidden",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "WITH_ASAN": "ON",
+        "WITH_ASAN_SCOPE": "ON"
+      }
+    },
+    {
+      "name": "valgrind_hidden",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "WITH_VALGRIND": "ON"
+      }
+    },
+    {
+      "name": "gcc14_hidden",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc-14",
+        "CMAKE_CXX_COMPILER": "g++-14"
+      }
+    },
+    {
+      "name": "clang19_hidden",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang-19",
+        "CMAKE_CXX_COMPILER": "clang++-19"
+      }
+    },
+
+    {
+      "name": "debug_gcc14",
+      "inherits": [ "common_hidden", "debug_hidden", "gcc14_hidden" ],
+      "displayName": "GCC 14 Debug"
+    },
+    {
+      "name": "release_gcc14",
+      "inherits": [ "common_hidden", "release_hidden", "gcc14_hidden" ],
+      "displayName": "GCC 14 RelWithDebInfo"
+    },
+    {
+      "name": "asan_gcc14",
+      "inherits": [ "common_hidden", "asan_hidden", "gcc14_hidden" ],
+      "displayName": "GCC 14 ASan"
+    },
+    {
+      "name": "valgrind_gcc14",
+      "inherits": [ "common_hidden", "valgrind_hidden", "gcc14_hidden" ],
+      "displayName": "GCC 14 Valgrind"
+    },
+
+    {
+      "name": "debug_clang19",
+      "inherits": [ "common_hidden", "debug_hidden", "clang19_hidden" ],
+      "displayName": "Clang 19 Debug"
+    },
+    {
+      "name": "release_clang19",
+      "inherits": [ "common_hidden", "release_hidden", "clang19_hidden" ],
+      "displayName": "Clang 19 RelWithDebInfo"
+    },
+    {
+      "name": "asan_clang19",
+      "inherits": [ "common_hidden", "asan_hidden", "clang19_hidden" ],
+      "displayName": "Clang 19 ASan"
+    },
+    {
+      "name": "valgrind_clang19",
+      "inherits": [ "common_hidden", "valgrind_hidden", "clang19_hidden" ],
+      "displayName": "Clang 19 Valgrind"
+    }
+  ]
+}
