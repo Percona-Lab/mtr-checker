@@ -33,7 +33,7 @@ public:
   }
 
 private:
-  using underlying_type = std::uint8_t;
+  using underlying_type = std::uint16_t;
   static_assert(sizeof(underlying_type) * 8 >= static_cast<std::size_t>(test_component_t::delimiter), "underlying_type must have enough bits");
   underlying_type component_bitset_;
 };
