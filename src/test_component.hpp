@@ -6,14 +6,17 @@
 #include <ostream>
 #include <string_view>
 
-#define MTR_CHECKER_TEST_COMPONENT_ITEMS() \
-  MTR_CHECKER_TEST_COMPONENT_X(test)       \
-  MTR_CHECKER_TEST_COMPONENT_X(result)     \
-  MTR_CHECKER_TEST_COMPONENT_X(cnf)        \
-  MTR_CHECKER_TEST_COMPONENT_X(opt)        \
-  MTR_CHECKER_TEST_COMPONENT_X(opt_master) \
-  MTR_CHECKER_TEST_COMPONENT_X(opt_slave ) \
-  MTR_CHECKER_TEST_COMPONENT_X(opt_client)
+#define MTR_CHECKER_TEST_COMPONENT_ITEMS()   \
+  MTR_CHECKER_TEST_COMPONENT_X(test)         \
+  MTR_CHECKER_TEST_COMPONENT_X(result)       \
+  MTR_CHECKER_TEST_COMPONENT_X(cnf)          \
+  MTR_CHECKER_TEST_COMPONENT_X(opt)          \
+  MTR_CHECKER_TEST_COMPONENT_X(opt_master)   \
+  MTR_CHECKER_TEST_COMPONENT_X(opt_slave )   \
+  MTR_CHECKER_TEST_COMPONENT_X(opt_client)   \
+  MTR_CHECKER_TEST_COMPONENT_X(sh_master)    \
+  MTR_CHECKER_TEST_COMPONENT_X(sh_slave)     \
+  MTR_CHECKER_TEST_COMPONENT_X(combinations)
 
 #define MTR_CHECKER_TEST_COMPONENT_X(ITEM) ITEM ,
 enum class test_component_t

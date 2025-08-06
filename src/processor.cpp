@@ -17,6 +17,8 @@ static constexpr std::string_view extension_test = ".test";
 static constexpr std::string_view extension_result = ".result";
 static constexpr std::string_view extension_cnf = ".cnf";
 static constexpr std::string_view extension_opt = ".opt";
+static constexpr std::string_view extension_sh = ".sh";
+static constexpr std::string_view extension_combinations = ".combinations";
 
 static constexpr std::string_view suffix_master = "-master";
 static constexpr std::string_view suffix_slave = "-slave";
@@ -53,6 +55,8 @@ void processor::process_directory(const std::filesystem::path & root, directory_
         test_component = test_component_t::test;
       else if (extension == extension_cnf)
         test_component = test_component_t::cnf;
+      else if (extension == extension_combinations)
+        test_component = test_component_t::combinations;
       else if (extension == extension_opt)
       {
         if (has_suffix(stem, suffix_master))
@@ -72,6 +76,19 @@ void processor::process_directory(const std::filesystem::path & root, directory_
         }
         else
           test_component = test_component_t::opt;
+      }
+      else if (extension == extension_sh)
+      {
+        if (has_suffix(stem, suffix_master))
+        {
+          test_component = test_component_t::sh_master;
+          stem.resize(stem.size() - suffix_master.size());
+        }
+        else if (has_suffix(stem, suffix_slave))
+        {
+          test_component = test_component_t::sh_slave;
+          stem.resize(stem.size() - suffix_slave.size());
+        }
       }
 
       if (test_component == test_component_t::delimiter)
