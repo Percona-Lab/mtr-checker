@@ -14,12 +14,18 @@ SUITES=(
 audit_null
 auth_sec
 binlog
+binlog_57_decryption
 binlog_gtid
 binlog_nogtid
 clone
 collations
+component_encryption_udf
 component_keyring_file
+component_keyring_kms
+component_masking_functions
+component_percona_telemetry
 connection_control
+data_masking
 encryption
 federated
 funcs_1
@@ -39,6 +45,8 @@ interactive_utilities
 jp
 json
 json_ndb
+junit
+junit_combinations
 large_tests
 lock_order
 max_parts
@@ -51,7 +59,13 @@ opt_trace
 parts
 perfschema
 query_rewrite_plugins
+rocksdb
+rocksdb_clone
+rocksdb_rpl
+rocksdb_stress
+rocksdb_sys_vars
 rpl
+rpl_encryption
 rpl_gtid
 rpl_ndb
 rpl_nogtid
@@ -65,6 +79,16 @@ sys_vars
 sysschema
 test_service_sql_api
 test_services
+tokudb
+tokudb_add_index
+tokudb_alter_table
+tokudb_backup
+tokudb_bugs
+tokudb_deprecation
+tokudb_parts
+tokudb_perfschema
+tokudb_rpl
+tokudb_sys_vars
 x
 )
 
@@ -72,6 +96,10 @@ ENGINES_SUITES=(
 funcs
 iuds
 rr_trx
+)
+
+KEYRING_PLAIN_SUITES=(
+component_keyring_kmip
 )
 
 NDB_PLAIN_SUITES=(
@@ -114,6 +142,15 @@ do
   echo "*** Suite: engines/$suite ***"
   echo "***"
   ${CHECKER_EXE} ${LOG_LEVEL} ${SOURCE_DIR}/mysql-test/suite/engines/$suite/t ${SOURCE_DIR}/mysql-test/suite/engines/$suite/r
+  echo
+done
+
+for suite in "${KEYRING_PLAIN_SUITES[@]}"
+do
+  echo "***"
+  echo "*** Suite: $suite ***"
+  echo "***"
+  ${CHECKER_EXE} ${LOG_LEVEL} ${SOURCE_DIR}/mysql-test/suite/$suite/t
   echo
 done
 
