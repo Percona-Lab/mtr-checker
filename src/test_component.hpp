@@ -10,6 +10,7 @@
   MTR_CHECKER_TEST_COMPONENT_X(test)         \
   MTR_CHECKER_TEST_COMPONENT_X(result)       \
   MTR_CHECKER_TEST_COMPONENT_X(cnf)          \
+  MTR_CHECKER_TEST_COMPONENT_X(cnf_router)   \
   MTR_CHECKER_TEST_COMPONENT_X(opt)          \
   MTR_CHECKER_TEST_COMPONENT_X(opt_master)   \
   MTR_CHECKER_TEST_COMPONENT_X(opt_slave )   \

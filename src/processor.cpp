@@ -20,9 +20,13 @@ static constexpr std::string_view extension_opt = ".opt";
 static constexpr std::string_view extension_sh = ".sh";
 static constexpr std::string_view extension_combinations = ".combinations";
 
+// .opt files suffixes
 static constexpr std::string_view suffix_master = "-master";
 static constexpr std::string_view suffix_slave = "-slave";
 static constexpr std::string_view suffix_client = "-client";
+
+// .cnf files suffixes
+static constexpr std::string_view suffix_router = "-router";
 
 static constexpr std::string_view stem_suit_opt = "suite";
 
@@ -54,7 +58,15 @@ void processor::process_directory(const std::filesystem::path & root, directory_
       else if (extension == extension_test)
         test_component = test_component_t::test;
       else if (extension == extension_cnf)
-        test_component = test_component_t::cnf;
+      {
+        if (has_suffix(stem, suffix_router))
+        {
+          test_component = test_component_t::cnf_router;
+          stem.resize(stem.size() - suffix_router.size());
+        }
+        else
+          test_component = test_component_t::cnf;
+      }
       else if (extension == extension_combinations)
         test_component = test_component_t::combinations;
       else if (extension == extension_opt)
